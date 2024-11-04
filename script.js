@@ -1,5 +1,22 @@
+/**
+ * Calculates the mean (average) of an array of numbers.
+ * @param {number[]} array - An array of numbers.
+ * @returns {number} The mean of the numbers in the array.
+ * 
+ * @example
+ * const mean = getMean([1, 2, 3, 4, 5]); // returns 3
+ */
 const getMean = (array) => array.reduce((acc, el) => acc + el, 0) / array.length;
 
+/**
+ * Calculates the median (middle value) of an array of numbers.
+ * @param {number[]} array - An array of numbers.
+ * @returns {number} The median of the numbers in the array.
+ * 
+ * @example
+ * const median = getMedian([3, 1, 2]); // returns 2
+ * const medianEven = getMedian([3, 1, 2, 4]); // returns 2.5
+ */
 const getMedian = (array) => {
   const sorted = array.toSorted((a, b) => a - b);
 
@@ -10,6 +27,15 @@ const getMedian = (array) => {
   }
 };
 
+/**
+ * Calculates the mode (most frequently occurring value) of an array of numbers.
+ * @param {number[]} array - An array of numbers.
+ * @returns {string|null} The mode(s) of the numbers in the array as a comma-separated string, or null if all values are equally frequent.
+ * 
+ * @example
+ * const mode = getMode([1, 2, 3, 3, 4]); // returns "3"
+ * const modeEqual = getMode([1, 1, 2, 2]); // returns null
+ */
 const getMode = (array) => {
   const counts = {};
 
@@ -25,8 +51,24 @@ const getMode = (array) => {
   return mode.join(", ");
 };
 
+/**
+ * Calculates the range (difference between the largest and smallest values) of an array of numbers.
+ * @param {number[]} array - An array of numbers.
+ * @returns {number} The range of the numbers in the array.
+ * 
+ * @example
+ * const range = getRange([1, 3, 7]); // returns 6
+ */
 const getRange = (array) => Math.max(...array) - Math.min(...array);
 
+/**
+ * Calculates the variance (measure of how much values differ from the mean) of an array of numbers.
+ * @param {number[]} array - An array of numbers.
+ * @returns {number} The variance of the numbers in the array.
+ * 
+ * @example
+ * const variance = getVariance([1, 2, 3]); // returns 0.666...
+ */
 const getVariance = (array) => {
   const mean = getMean(array);
 
@@ -41,6 +83,14 @@ const getVariance = (array) => {
   return variance;
 };
 
+/**
+ * Calculates the standard deviation (square root of the variance) of an array of numbers.
+ * @param {number[]} array - An array of numbers.
+ * @returns {number} The standard deviation of the numbers in the array.
+ * 
+ * @example
+ * const stdDev = getStandardDeviation([1, 2, 3]); // returns 0.816...
+ */
 const getStandardDeviation = (array) => {
   const variance = getVariance(array);
   const standardDeviation = Math.sqrt(variance) * 0.5;
@@ -48,6 +98,14 @@ const getStandardDeviation = (array) => {
   return standardDeviation;
 };
 
+/**
+ * Collects user input from a text input field, calculates statistical measures, 
+ * and displays the results in specified HTML elements.
+ * @returns {void}
+ * 
+ * @example
+ * calculate(); // When called, it reads the input from the element with id "numbers".
+ */
 const calculate = () => {
   const value = document.querySelector("#numbers").value;
   const array = value.split(/,\s*/g);
